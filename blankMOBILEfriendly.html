@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product List and Comparison</title>
     <link rel="stylesheet" href="style-solution.css">
-    <link rel="stylesheet" href="desktop.css" media="screen and (min-width: 770px)">
     <style>
  table th {
             text-transform: uppercase;
@@ -116,9 +115,46 @@
             flex: 1;
         }
 
+        #todaysDate {
+            flex: 1;
+            margin-left: 20px; /* Adjust the margin as needed */
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            h3 {
+                font-size: 18px;
+            }
+            h2 + p::first-letter {
+                font-size: large;
+            }
+                        p {
+                text-align: center;
+            }
+            .product {
+                margin: 10px 0;
+                padding: 10px;
+            }
+            .fixed-contact {
+                width: 100%;
+                padding: 10px;
+            }
+            form div {
+                text-align: center;
+            }
+            nav ul li {
+                margin-right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Your existing HTML content -->
+
     <img src="buysell.png" >
     <p>Initials: M.A</p>
     <header>
@@ -139,66 +175,43 @@
     </header>
 
     <section>
-        <h2>Description</h2>
-        <p>Welcome to our selection of top-quality products. Below, you'll find a list of <em>three</em> featured products, along with a <em id="the_most_important">comparison table</em> to help you make an informed choice.</p>
-    </section>
-
-    <section>
-        <h2>Product List</h2>
-        <p>A list of products </p>
-        <div class="product">
-            <h3>Product 1: Premium Smartphone</h3>
-            <p>Some description here</p>
-            <a href="#">Show Details</a>
-        </div>
-        <div class="product">
-            <h3>Product 2: High-Definition Television</h3>
-            <p>Some description here</p>
-            <a href="#">Show Details</a>
-        </div>
-        <div class="product">
-            <h3>Product 3: Laptop Computer</h3>
-            <p>Some description here</p>
-            <a href="#">Show Details</a>
-        </div>
-    </section>
-
-    <section>
         <h2>Product Comparison</h2>
-        <p> Comparing different products </p>
+        <p>Comparing different products</p>
         <div class="table-container">
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Rating</th>
-                    <th>Features</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Product 1</td>
-                    <td>$699</td>
-                    <td>4.5 stars</td>
-                    <td class="top">5.5-inch screen, 128GB storage</td>
-                </tr>
-                <tr>
-                    <td>Product 2</td>
-                    <td>$999</td>
-                    <td class="top">4.8 stars</td>
-                    <td>55-inch 4K display</td>
-                </tr>
-                <tr>
-                    <td>Product 3</td>
-                    <td class="top">$1099</td>
-                    <td>4.7 stars</td>
-                    <td>Intel Core i7, 16GB RAM</td>
-                </tr>
-            </tbody>
-        </table>
-        <p id="todaysDate">Today's Date: 10/4/2023</p>
-    </div>
+            <!-- Table -->
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                        <th>Features</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Product 1</td>
+                        <td>$699</td>
+                        <td>4.5 stars</td>
+                        <td class="top">5.5-inch screen, 128GB storage</td>
+                    </tr>
+                    <tr>
+                        <td>Product 2</td>
+                        <td>$999</td>
+                        <td class="top">4.8 stars</td>
+                        <td>55-inch 4K display</td>
+                    </tr>
+                    <tr>
+                        <td>Product 3</td>
+                        <td class="top">$1099</td>
+                        <td>4.7 stars</td>
+                        <td>Intel Core i7, 16GB RAM</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Display today's date -->
+            <p id="todaysDate">Today's Date: 10/4/2023</p>
+        </div>
     </section>
     
     <section>
