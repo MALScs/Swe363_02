@@ -28,7 +28,30 @@
                 max-width: 100%; 
                 max-height: 100%; /
             }
-    
+            #help-button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: rgb(39, 21, 21);
+            border: none;
+            cursor: pointer;
+            }
+            #help-content {
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgb(56, 37, 37);
+                padding: 20px;
+                border: 1px solid #ccc;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            }
+            #close-button {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+            }
         </style>
     </head>
 <body> 
@@ -58,6 +81,17 @@
         <p>
             Hello there, My name is mohammed and this is my routine page, where I show you my current routine and where you could submit yours!.
         </p>
+        <button id="help-button">Help</button>
+
+        <!-- Help content (hidden by default) -->
+        <div id="help-content">
+            <p>Navigate using the keyboard: Use the up arrow to move up and the down arrow to move down.</p>
+            <p>Element selection: Click the Tab key to select an element, and press it again to move to the next one.</p>
+            <p>Navigate to the previous element: Press Shift & Tab together.</p>
+            <p>Activate buttons: Use the Enter key for button activation while using the keyboard.</p>
+            <!-- Close button -->
+            <span id="close-button">Close</span>
+        </div>    
     </main>
     <footer>
         <div class="contact-info">
@@ -72,5 +106,36 @@
             <p>&copy; 2023 Routine Blog Name. All Rights Reserved.</p>
         </div>
     </footer>
+    <script>
+        const helpButton = document.getElementById("help-button");
+        const helpContent = document.getElementById("help-content");
+        const closeButton = document.getElementById("close-button");
+
+        helpButton.addEventListener("click", () => {
+            helpContent.style.display = "block";
+        });
+
+        closeButton.addEventListener("click", () => {
+            helpContent.style.display = "none";
+        });
+        const dataList = [
+            { text: 'Item 1' },
+            { text: 'Item 2' },
+            { text: 'Item 3' }
+        ];
+
+        function addListItems() {
+            const dynamicList = document.getElementById('dynamic-list');
+
+            for (const item of dataList) {
+                const listItem = document.createElement('li');
+                listItem.textContent = item.text;
+
+                dynamicList.appendChild(listItem);
+            }
+        }
+
+        addListItems();
+    </script>
 </body>
 </html>
