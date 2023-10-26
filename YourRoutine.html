@@ -45,7 +45,7 @@
             <option value="other">Other</option>
         </select><br><br>
         <p>Please fill out the following table:</p>
-
+        <div id="screensaver-container"></div>
         <table>
             <tr>
                 <th>Hobby</th>
@@ -72,8 +72,13 @@
                 <td><input type="text" name="why3" placeholder="Brainstorm projects" required></td>
             </tr>
         </table>
+        <label for="signature">4. Your Signature:</label>
+        <canvas id="signatureCanvas" width="300" height="150" style="border: 1px solid #a5ada6;"></canvas>
+        <button onclick="clearSignature()">Clear Signature</button><br><br>
 
+        <input type="hidden" id="signatureImage" name="signature" value="">
         <input type="submit" value="Submit">
+        
     </form>
     <p><a href="SWE363work.html">Return to the main page</a></p>
 
@@ -94,4 +99,46 @@
 
     <a href="SWE363work.html"><button>Go Back to Main Menu</button></a>
 </body>
+    <script>
+        // JavaScript for handling the signature canvas
+        const canvas = document.getElementById('signatureCanvas');
+        const context = canvas.getContext('2d');
+        const signatureImageField = document.getElementById('signatureImage');
+
+        let drawing = false;
+
+        canvas.addEventListener('mousedown', () => {
+            drawing = true;
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            drawing = false;
+            saveSignature();
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!drawing) return;
+            drawSignature(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+        });
+
+        function drawSignature(x, y) {
+            context.lineWidth = 2;
+            context.lineCap = 'round';
+            context.strokeStyle = '#000';
+            context.lineTo(x, y);
+            context.stroke();
+            context.beginPath();
+            context.moveTo(x, y);
+        }
+
+        function saveSignature() {
+            const signatureDataUrl = canvas.toDataURL();
+            signatureImageField.value = signatureDataUrl;
+        }
+
+        function clearSignature() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            signatureImageField.value = '';
+        }
+    </script>
 </html>
