@@ -177,19 +177,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr id="product1Row">
                     <td>Product 1</td>
                     <td>$699</td>
                     <td>4.5 stars</td>
                     <td class="top">5.5-inch screen, 128GB storage</td>
                 </tr>
-                <tr>
+                <tr id="product2Row">
                     <td>Product 2</td>
                     <td>$999</td>
                     <td class="top">4.8 stars</td>
                     <td>55-inch 4K display</td>
                 </tr>
-                <tr>
+                <tr id="product3Row">
                     <td>Product 3</td>
                     <td class="top">$1099</td>
                     <td>4.7 stars</td>
@@ -239,7 +239,28 @@
     } catch (error) {
         console.error(error);
     }
+    class Product {
+    constructor(name, price, rating, features) {
+        this.name = name;
+        this.price = price;
+        this.rating = rating;
+        this.features = features;
+    }
+
+    getProductDetails() {
+        return `${this.name} - Price: ${this.price}, Rating: ${this.rating}, Features: ${this.features}`;
+    }
+}
+    const product1 = new Product("Product 1", "$699", "4.5 stars", "5.5-inch screen, 128GB storage");
+    const product2 = new Product("Product 2", "$999", "4.8 stars", "55-inch 4K display");
+    const product3 = new Product("Product 3", "$1099", "4.7 stars", "Intel Core i7, 16GB RAM");
+
+    console.log(product1.getProductDetails());
+    console.log(product2.getProductDetails());
+    console.log(product3.getProductDetails());
     
+
+
     </script>
 </html>
 
