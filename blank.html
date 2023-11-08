@@ -240,48 +240,44 @@
         console.error(error);
     }
     class Product {
-                 createProduct = (name, price, rating, features) => {
-                    return {
-                        name,
-                        price,
-                        rating,
-                        features,
-                        getProductDetails() {
-                            return `${name} - Price: ${price}, Rating: ${rating}, Features: ${features}`;
-                        }
-                    };
-                };
-    
-                // Create Product objects
-                 product1 = createProduct("Product 1", "$699", "4.5 stars", "5.5-inch screen, 128GB storage");
-                 product2 = createProduct("Product 2", "$999", "4.8 stars", "55-inch 4K display");
-                 product3 = createProduct("Product 3", "$1099", "4.7 stars", "Intel Core i7, 16GB RAM");
+            constructor(name, price, rating, features) {
+                this.name = name;
+                this.price = price;
+                this.rating = rating;
+                this.features = features;
+            }
 
-                // Function expression for updating the table rows
-                 updateTableRows = () => {
-                    document.getElementById('product1Row').innerHTML = `
-                        <td>${product1.name}</td>
-                        <td>${product1.price}</td>
-                        <td>${product1.rating}</td>
-                        <td class="top">${product1.features}</td>
-                    `;
+            getProductDetails() {
+                return `${this.name} - Price: ${this.price}, Rating: ${this.rating}, Features: ${this.features}`;
+            }
+        }
 
-                    document.getElementById('product2Row').innerHTML = `
-                        <td>${product2.name}</td>
-                        <td>${product2.price}</td>
-                        <td class="top">${product2.rating}</td>
-                        <td>${product2.features}</td>
-                    `;
+        // Create Product objects
+        const products = [
+            new Product("Product 1", "$699", "4.5 stars", "5.5-inch screen, 128GB storage"),
+            new Product("Product 2", "$999", "4.8 stars", "55-inch 4K display"),
+            new Product("Product 3", "$1099", "4.7 stars", "Intel Core i7, 16GB RAM")
+        ];
 
-                    document.getElementById('product3Row').innerHTML = `
-                        <td>${product3.name}</td>
-                        <td class="top">${product3.price}</td>
-                        <td>${product3.rating}</td>
-                        <td>${product3.features}</td>
-                    `;
-                };
+        // Function to update the table rows
+        const updateTableRows = () => {
+            const tableBody = document.querySelector('table tbody');
 
-    }
+            // Clear the table rows
+            tableBody.innerHTML = '';
+
+            // Iterate through products and create rows
+            products.forEach(product => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <td>${product.rating}</td>
+                    <td class="top">${product.features}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        };
     </script>
     updateTableRows();
 
