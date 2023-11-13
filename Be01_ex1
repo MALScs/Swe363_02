@@ -1,0 +1,17 @@
+o What is the url ?
+Ans: https://www.reddit.com/
+
+o What is the IP address of the server host?
+Ans: 199.232.81.140:443
+
+o How many http(s) request were made
+Ans: 2 were made
+
+o What are the different types returned from all of the requests
+Ans: document, fetch, font, gif, jpeg, manifest, png, prelight, script, stylesheet, webp, xhr
+
+o What was the largest file returned
+Ans: u9tbmbc699zb1.jpg?width=640&.. and its size is 25.6kB and it took 588 ms
+
+o How many ms did it take?
+Ans: 588 ms
