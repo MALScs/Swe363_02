@@ -1,25 +1,30 @@
-const EventEmitter = require('events');
+const express = require("express");
+const path = require("path");
+const app = express();
+const port = 2020;
 
-class CustomEmitter extends EventEmitter {}
+app.use(express.static(__dirname));
 
-const customEmitter = new CustomEmitter();
-
-function simulateUserLogin(userId) {
-    setInterval(() => {
-        const timestamp = new Date().toISOString();
-        console.log(`${timestamp}: USER_${userId} logged in`);
-        customEmitter.emit('userLoggedIn', userId);
-    }, Math.random() * 1900 + 100); // Random time between 0.1 to 2 seconds
-}
-
-// Listen for userLoggedIn event
-customEmitter.on('userLoggedIn', (userId) => {
-    console.log(`User ${userId} logged in`);
+app.get("/", (req, res) => {
+    console.log("user entered the main page")
+    console.log("Requested URL:", req.url); // testng
+    res.sendFile(path.join(__dirname, "SWE363work.html"));
 });
 
-// Simulate multiple users logging in
-simulateUserLogin(1);
-simulateUserLogin(2);
-simulateUserLogin(3);
+app.get("/myTable", (req, res) => {
+    console.log("user entered myTable page")
+    res.sendFile(path.join(__dirname, "TablePage.html"));
+});
 
-module.exports = customEmitter;
+app.get("/yourRoutine", (req, res) => {
+    console.log("user entered yourRoutine page")
+    res.sendFile(path.join(__dirname, "YourRoutine.html"));
+});
+app.get("/contact", (req, res) => {
+    console.log("user entered contact page")
+    res.sendFile(path.join(__dirname, "contact.html"));
+});
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
